@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myself</title>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            perspective: 1000px; /* Added perspective to the body for 3D effect */
+            background-color: #f0f0f0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            height: 93vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* 3D Effect */
+        h1, p, .brand {
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), -3px -3px 5px rgba(255, 255, 255, 0.5);
+            transform: rotateX(10deg) rotateY(10deg); /* Apply 3D transformation */
+            animation: floating 3s ease-in-out infinite alternate;
+            transition: transform 0.5s ease;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0px) rotateX(10deg) rotateY(10deg);
+            }
+            50% {
+                transform: translateY(-10px) rotateX(20deg) rotateY(20deg);
+            }
+            100% {
+                transform: translateY(0px) rotateX(10deg) rotateY(10deg);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero h1 span {
+            background-image: linear-gradient(90deg, red, yellow, green, gold, black);
+            background-size: 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: #ff0000;
+            animation: multiColorShine 4s infinite linear;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin: 10px 0 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.6;
+            background-image: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd, #c2e9fb, #ff9a9e);
+            background-size: 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: multiColorShine 3s infinite linear;
+        }
+
+        .brand {
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            background-image: linear-gradient(90deg, red, yellow, pink, green, white);
+            background-size: 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: multiColorShine 3s infinite linear;
+        }
+
+        @keyframes multiColorShine {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 100%;
+            }
+        }
+
+        .top-container {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .menu-button {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .menu-button div {
+            width: 30px;
+            height: 3px;
+            background: white;
+            border-radius: 5px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .menu-button.open div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-button.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-button.open div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ffcc00;
+        }
+
+        .menu-mobile {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px;
+            border-radius: 8px;
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-mobile a {
+            text-decoration: none;
+            color: #2575fc;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .menu-mobile a:hover {
+            background: #2575fc;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+
+            .menu-button {
+                display: flex;
+            }
+
+            .menu-mobile.active {
+                display: flex;
+            }
+        }
+
+        .social-icons {
+            position: absolute;
+            bottom: 110px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: transparent;
+        }
+
+        .social-icons img {
+            width: 40px; /* Set the size of the logo */
+            height: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: transparent; /* Make sure the background is transparent */
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px 3px rgba(255, 165, 0, 0.7), 0 0 15px 5px rgba(255, 255, 0, 0.5);
+        }
+
+        .hero img {
+            margin-top: 20px;
+            max-width: 85%;
+            height: auto;
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="top-container">
+            <div class="logo-container">
+                <img src="laptop1.png" alt="Logo" class="logo">
+                <div class="brand">MYSELF</div>
+            </div>
+            <div class="menu-button" id="menuButton" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <div class="menu">
+            <a href="#home">Home</a>
+            <a href="#aboutme">About Me</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <div class="menu-mobile" id="mobileMenu">
+            <a href="#home">Home</a>
+            <a href="#aboutme">About Me</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <h1>Hey, I'm <span id="typingName"></span> from Delhi</h1>
+        <p>I'm learning web development and ethical hacking.</p>
+        <img src="Bg.png" alt="Image Description">
+
+        <!-- Social Media Icons with PNG Images -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/opabhinavsingh?mibextid=ZbWKwL" target="_blank" aria-label="Facebook">
+                <img src="facebook.png" alt="Facebook Logo">
+            </a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                <img src="twitter.png" alt="Twitter Logo">
+            </a>
+            <a href="https://www.instagram.com/im_not_raaz?igsh=eWszZTV2bmVhOHlr" target="_blank" aria-label="Instagram">
+                <img src="instagram.png" alt="Instagram Logo">
+            </a>
+            <a href="https://linkedin.com" target="_blank" aria-label="Github">
+                <img src="github.png" alt="Github Logo">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuButton = document.getElementById('menuButton');
+            mobileMenu.classList.toggle('active');
+            menuButton.classList.toggle('open');
+        }
+
+        // Typing Effect
+        const nameElement = document.getElementById("typingName");
+        const nameText = "Ayush";
+        let index = 0;
+
+        function typeEffect() {
+            if (index < nameText.length) {
+                nameElement.textContent += nameText[index];
+                index++;
+                setTimeout(typeEffect, 150);
+            } else {
+                setTimeout(() => {
+                    nameElement.textContent = "";
+                    index = 0;
+                    typeEffect();
+                }, 2000);
+            }
+        }
+
+        typeEffect();
+    </script>
+</body>
+</html>
